@@ -4,7 +4,7 @@ namespace App\Http\Middleware\Tenant;
 
 use Closure;
 
-class CheckDomainMain
+class NotDomainMain
 {
     /**
      * Handle an incoming request.
@@ -15,8 +15,7 @@ class CheckDomainMain
      */
     public function handle($request, Closure $next)
     {
-
-        if(request()->getHost() != config('tenant.domain_main') ){
+        if(request()->getHost() == config('tenant.domain_main') ){
             abort(401,'Acesso não  permitido');
         }
 
